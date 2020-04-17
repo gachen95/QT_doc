@@ -58,8 +58,10 @@ int indexOf (const QString &str, int from = 0 , Qt::CaseSensitivity cs = Qt::Cas
 
 lastIndexOf() 函数则是查找某个字符串最后出现的位置。
 
-```
-QString str1="G:\Qt5Book\QT5.9Study\qw.cpp";N=str1.indexOf("5.9");  // N=13N=str1.lastIndexOf("\\"); //N=21
+```c
+QString str1="G:\Qt5Book\QT5.9Study\qw.cpp";
+N=str1.indexOf("5.9");  // N=13
+N=str1.lastIndexOf("\\"); //N=21
 ```
 
 提示，"\" 是转义字符，如果要查找 "\"，需要输入 "\\"。
@@ -68,8 +70,12 @@ QString str1="G:\Qt5Book\QT5.9Study\qw.cpp";N=str1.indexOf("5.9");  // N=13N=str
 
 两个函数都判读字符串是否为空，但是稍有差别。如果一个空字符串，只有“\0”，isNull() 返回 false，而 isEmpty() 返回 true；只有未赋值的字符串，isNull() 才返回 true。
 
-```
-QString str1, str2="";N=str1.isNull () ; // N=true 未赋值字符串变量N=str2.isNull () ; // N=false 只有"\0"的字符串，也不是 NullN=str1.isEmpty(); // N=trueN=str2.isEmpty(); // N=true
+```c
+QString str1, str2="";
+N=str1.isNull () ; // N=true 未赋值字符串变量
+N=str2.isNull () ; // N=false 只有"\0"的字符串，也不是 Null
+N=str1.isEmpty(); // N=true
+N=str2.isEmpty(); // N=true
 ```
 
 QString 只要赋值，就在字符串的末尾自动加上 "\0"，所以，如果只是要判断字符串内容是否为空，常用 isEmpty()。
@@ -78,24 +84,33 @@ QString 只要赋值，就在字符串的末尾自动加上 "\0"，所以，如�
 
 判断字符串内是否包含某个字符串，可指定是否区分大小写。
 
-```
-QString str1="G:\Qt5Book\QT5.9Study\qw.cpp";N=str1.contains (".cpp", Qt::CaseInsensitive) ; // N=true,不区分大小写N=str1.contains (".CPP", Qt::CaseSensitive) ;  // N=false,区分大小写
+```c
+QString str1="G:\Qt5Book\QT5.9Study\qw.cpp";
+N=str1.contains (".cpp", Qt::CaseInsensitive) ; // N=true,不区分大小写
+N=str1.contains (".CPP", Qt::CaseSensitive) ;  // N=false,区分大小写
 ```
 
 #### endsWith() 和 startsWith()
 
 startsWith() 判断是否以某个字符串幵头，endsWith() 判断是否以某个字符串结束。
 
-```
-QString str1=MG:\Qt5Book\QT5.9Study\qw.cpp";N=str1.endsWith (".cpp", Qt::CaseInsensitive) ; // N=true，不区分大小写N=str1.endsWith (".CPP", Qt::CaseSensitive) ; // N=false，区分大小写N=str1.startsWith ("g: ") ; // N=true，缺省为不区分大小写
+```c
+QString str1=MG:\Qt5Book\QT5.9Study\qw.cpp";
+N=str1.endsWith (".cpp", Qt::CaseInsensitive) ; // N=true，不区分大小写
+N=str1.endsWith (".CPP", Qt::CaseSensitive) ; // N=false，区分大小写
+N=str1.startsWith ("g: ") ; // N=true，缺省为不区分大小写
 ```
 
 #### left() 和 right()
 
 left 表示从字符串中取左边多少个字符，right 表示从字符串中取右边多少个字符。注意，一个汉字被当作一个字符。
 
-```
-QString str2, str1="学生姓名,男,1984-3-4,汉族,山东";N=str1.indexOf (",") ; // N=4，第一个","出现的位置str2=str1.left (N) ; //str2="学生姓名"N=str1.lastIndexOf (",") ; // N=18，最后一个逗号的位置str2=str1.right (str1.size()-N-1); //str2=”山东"，提取最后一个逗号之后的字符串
+```c
+QString str2, str1="学生姓名,男,1984-3-4,汉族,山东";
+N=str1.indexOf (",") ; // N=4，第一个","出现的位置
+str2=str1.left (N) ; //str2="学生姓名"
+N=str1.lastIndexOf (",") ; // N=18，最后一个逗号的位置
+str2=str1.right (str1.size()-N-1); //str2=”山东"，提取最后一个逗号之后的字符串
 ```
 
 #### section()
@@ -106,9 +121,13 @@ QString section (const QString &sep, int start, int end = -1, SectionFlags flags
 
 其功能是从字符串中提取以 sep 作为分隔符，从 start 端到 end 端的字符串。
 
-```
+```c
 纯文本复制
-QString str2, str1="学生姓名,男,1984-3-4,汉族,山东";str2=str1.section (",",0,0); // str2="学生姓名"， 第 1 段的编号为 0str2=str1.section (",",1,1}; // str2="男"str2=str1.section (",",0,1}; // str2="学生姓名，男"str2=str1.section (",",4,4); // str2="山东"
+QString str2, str1="学生姓名,男,1984-3-4,汉族,山东";
+str2=str1.section (",",0,0); // str2="学生姓名"， 第 1 段的编号为 0
+str2=str1.section (",",1,1}; // str2="男"
+str2=str1.section (",",0,1}; // str2="学生姓名，男"
+str2=str1.section (",",4,4); // str2="山东"
 ```
 
 
